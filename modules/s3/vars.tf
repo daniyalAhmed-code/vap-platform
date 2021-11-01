@@ -1,0 +1,2 @@
+variable "ARTIFACT_S3_BUCKET_NAME"{}
+variable "DEV_PORTAL_SITE_S3_BUCKET_NAME"{}
