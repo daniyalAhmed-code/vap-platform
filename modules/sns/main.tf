@@ -1,6 +1,6 @@
 resource "aws_sns_topic" "topic" {
-  count = var.ENABLE_FEEDBACK_SUBMISSION  ? 1 : 0
-  name = var.TOPIC_NAME
+  count = var.ENABLE_FEEDBACK_SUBMISSION ? 1 : 0
+  name  = var.TOPIC_NAME
 }
 
 resource "aws_sns_topic_subscription" "email-target" {
