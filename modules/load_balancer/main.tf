@@ -28,7 +28,7 @@ resource "aws_lb_target_group" "nlb_tg" {
 resource "aws_lb_listener" "alb_listener" {
   load_balancer_arn = aws_lb.application_load_balancer.arn
   port              = "443"
-  protocol          = "HTTP"
+  protocol          = "HTTPS"
 
 
   default_action {
@@ -56,6 +56,7 @@ resource "aws_lb" "application_load_balancer" {
   subnets                    = var.PRIVATE_SUBNET_MAPPING
   enable_deletion_protection = false
   security_groups            = [var.SG_ID]
+  drop_invalid_header_fields  = true
 
 }
 

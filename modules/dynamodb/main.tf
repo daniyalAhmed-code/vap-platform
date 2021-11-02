@@ -8,7 +8,9 @@ resource "aws_dynamodb_table" "dynamo-dev-portal-customer-db-table" {
     name = "Id"
     type = "S"
   }
-
+  point_in_time_recovery {
+        enabled = var.ENABLE_POINT_IN_TIME_RECOVERY
+    }
 }
 
 resource "aws_dynamodb_table" "dynamo-pre-login-accounts-db-table" {
@@ -22,7 +24,9 @@ resource "aws_dynamodb_table" "dynamo-pre-login-accounts-db-table" {
     name = "UserId"
     type = "S"
   }
-
+  point_in_time_recovery {
+        enabled = var.ENABLE_POINT_IN_TIME_RECOVERY
+    }
 }
 
 

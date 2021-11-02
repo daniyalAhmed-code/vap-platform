@@ -15,7 +15,8 @@ resource "aws_iam_policy" "vap_policy" {
         "logs:DescribeLogStreams"
       ],
       "Effect": "Allow",
-      "Resource": "*"
+      "Resource": "arn:aws:logs:${var.AWS_REGION}:${var.CURRENT_ACCOUNT_ID}:*"
+
     }
   ]
 }

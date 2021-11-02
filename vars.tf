@@ -17,3 +17,4 @@ variable "kms_deletion_windows_in_days" {
   description = "Duration in days after which the key is deleted after destruction of the resource"
   default     = 30
 }
+variable "ENABLE_POINT_IN_TIME_RECOVERY" {}
