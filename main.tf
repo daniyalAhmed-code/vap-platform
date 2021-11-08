@@ -59,7 +59,7 @@ module "policy" {
   FLOW_LOGS_ROLE_NAME = module.roles.FLOW_LOGS_ROLE_NAME
   AWS_REGION          = local.AWS_REGION
   CURRENT_ACCOUNT_ID  = local.CURRENT_ACCOUNT_ID
-
+  FLOW_LOGS_GROUP_NAME = module.cw.VPC_FLOW_LOGS_CLOUDWATCH
 }
 
 module "load_balancer" {
@@ -102,6 +102,7 @@ module "cw" {
   LAMBDA_FUNCTION_ARN                = module.lambda.NLB_ALB_CONNECTOR_LAMBDA_ARN
   ENABLE_VPC_FLOW_LOGS_IN_CLOUDWATCH = var.ENABLE_VPC_FLOW_LOGS_IN_CLOUDWATCH
   CURRENT_ACCOUNT_ID                 = data.aws_caller_identity.current.account_id
+  KMS_KEY_ARN                        = module.kms.key_arn
 }
 
 module "kms" {

@@ -15,8 +15,15 @@ resource "aws_iam_policy" "vap_policy" {
         "logs:DescribeLogStreams"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:logs:${var.AWS_REGION}:${var.CURRENT_ACCOUNT_ID}:*"
+      "Resource": "${var.FLOW_LOGS_GROUP_NAME}"
 
+    },
+    {
+      "Action": [
+        "kms:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "${var.FLOW_LOGS_GROUP_NAME}"
     }
   ]
 }

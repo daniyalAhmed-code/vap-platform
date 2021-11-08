@@ -6,3 +6,4 @@ variable "LAMBDA_ROLE_NAME" {}
 variable "FLOW_LOGS_ROLE_NAME" {}
 variable "AWS_REGION" {}
 variable "CURRENT_ACCOUNT_ID" {}
+variable "FLOW_LOGS_GROUP_NAME" {}
