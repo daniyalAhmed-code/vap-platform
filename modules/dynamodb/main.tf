@@ -11,6 +11,9 @@ resource "aws_dynamodb_table" "dynamo-dev-portal-customer-db-table" {
   point_in_time_recovery {
         enabled = var.ENABLE_POINT_IN_TIME_RECOVERY
     }
+  server_side_encryption{
+    enabled = true
+  }
 }
 
 resource "aws_dynamodb_table" "dynamo-pre-login-accounts-db-table" {
@@ -27,6 +30,9 @@ resource "aws_dynamodb_table" "dynamo-pre-login-accounts-db-table" {
   point_in_time_recovery {
         enabled = var.ENABLE_POINT_IN_TIME_RECOVERY
     }
+  server_side_encryption{
+    enabled = true
+  }
 }
 
 
@@ -49,6 +55,9 @@ resource "aws_dynamodb_table" "dynamo-dev-portal-feedback-db-table" {
     read_capacity   = 5
     projection_type = "KEYS_ONLY"
 
+  }
+  server_side_encryption{
+    enabled = true
   }
 }
 

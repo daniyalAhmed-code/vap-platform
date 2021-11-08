@@ -2,14 +2,13 @@ resource "aws_s3_bucket" "dev_portal_s3_bucket" {
   bucket        = var.DEV_PORTAL_SITE_S3_BUCKET_NAME
   acl           = "private"
   force_destroy = true
-  # server_side_encryption_configuration {
-  #   rule {
-  #     apply_server_side_encryption_by_default {
-  #       kms_master_key_id = "aws_kms_key.mykey.arn"
-  #       sse_algorithm     = "aws:kms"
-  #     }
-  #   }
-  # }
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm     = "AES256"
+      }
+    }
+  }
 }
 resource "aws_s3_bucket_public_access_block" "dev_protal_bucket" {
   bucket = aws_s3_bucket.dev_portal_s3_bucket.id
@@ -27,14 +26,13 @@ resource "aws_s3_bucket" "artifact_s3_bucket" {
    versioning {
     enabled = true
   }
-  # server_side_encryption_configuration {
-  #   rule {
-  #     apply_server_side_encryption_by_default {
-  #       kms_master_key_id = "aws_kms_key.mykey.arn"
-  #       sse_algorithm     = "aws:kms"
-  #     }
-  #   }
-  # }
+  server_side_encryption_configuration {
+      rule {
+        apply_server_side_encryption_by_default {
+          sse_algorithm     = "AES256"
+        }
+      }
+  }
 }
 
 resource "aws_s3_bucket_public_access_block" "artifact_bucket" {
@@ -50,14 +48,13 @@ resource "aws_s3_bucket" "ip_list_bucket" {
   bucket        = "${var.RESOURCE_PREFIX}-nlb-alb-connector-bucket"
   acl           = "private"
   force_destroy = true
-  # server_side_encryption_configuration {
-  #   rule {
-  #     apply_server_side_encryption_by_default {
-  #       kms_master_key_id = "aws_kms_key.mykey.arn"
-  #       sse_algorithm     = "aws:kms"
-  #     }
-  #   }
-  # }
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm     = "AES256"
+      }
+    }
+  }
 }
 
 resource "aws_s3_bucket_public_access_block" "ip_list_bucket" {
@@ -79,14 +76,13 @@ resource "aws_s3_bucket" "vpc_flow_logs" {
   versioning {
     enabled = true
   }
-  # server_side_encryption_configuration {
-  #   rule {
-  #     apply_server_side_encryption_by_default {
-  #       kms_master_key_id = "aws_kms_key.mykey.arn"
-  #       sse_algorithm     = "aws:kms"
-  #     }
-  #   }
-  # }
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm     = "AES256"
+      }
+    }
+  }
 }
 
 resource "aws_s3_bucket_public_access_block" "vpc_flow_logs_bucket" {

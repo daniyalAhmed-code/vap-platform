@@ -39,9 +39,8 @@ resource "aws_iam_policy" "lambda_policy" {
           "logs:CreateLogStream",
           "logs:PutLogEvents"
         ],
-        "Resource" : [
-          "arn:aws:logs:*:*:*"
-        ]
+      "Resource": "arn:aws:logs:${var.AWS_REGION}:${var.CURRENT_ACCOUNT_ID}:*"
+
       },
       {
         "Sid" : "S3Objects",
@@ -66,7 +65,7 @@ resource "aws_iam_policy" "lambda_policy" {
           "s3:ListAllMyBuckets"
         ],
         "Effect" : "Allow",
-        "Resource" : "*"
+        "Resource" : "arn:aws:s3:::*"
       },
       {
         "Sid" : "ELB",
