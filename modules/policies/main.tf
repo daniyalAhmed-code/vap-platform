@@ -15,15 +15,7 @@ resource "aws_iam_policy" "vap_policy" {
         "logs:DescribeLogStreams"
       ],
       "Effect": "Allow",
-      "Resource": "${var.FLOW_LOGS_GROUP_NAME}"
-
-    },
-    {
-      "Action": [
-        "kms:*"
-      ],
-      "Effect": "Allow",
-      "Resource": "${var.FLOW_LOGS_GROUP_NAME}"
+      "Resource": "arn:aws:logs:${var.AWS_REGION}:${var.CURRENT_ACCOUNT_ID}:*"
     }
   ]
 }
@@ -46,8 +38,7 @@ resource "aws_iam_policy" "lambda_policy" {
           "logs:CreateLogStream",
           "logs:PutLogEvents"
         ],
-      "Resource": "arn:aws:logs:${var.AWS_REGION}:${var.CURRENT_ACCOUNT_ID}:*"
-
+        "Resource": "arn:aws:logs:${var.AWS_REGION}:${var.CURRENT_ACCOUNT_ID}:*"
       },
       {
         "Sid" : "S3Objects",
@@ -56,7 +47,10 @@ resource "aws_iam_policy" "lambda_policy" {
           "s3:PutObject"
         ],
         "Effect" : "Allow",
-        "Resource" : "${var.IP_LIST_BUCKET}/*"
+        "Resource" : [
+          "${var.IP_LIST_BUCKET}/*",
+          "${var.IP_LIST_BUCKET}"
+        ]
       },
       {
         "Sid" : "S3List",
@@ -64,7 +58,10 @@ resource "aws_iam_policy" "lambda_policy" {
           "s3:ListBucket"
         ],
         "Effect" : "Allow",
-        "Resource" : "${var.IP_LIST_BUCKET}"
+        "Resource" : [
+          "${var.IP_LIST_BUCKET}/*",
+          "${var.IP_LIST_BUCKET}"
+        ]
       },
       {
         "Sid" : "S3ListAll",

@@ -1,4 +1,4 @@
-ENV                                = "test"
+ENV                                = "pprod"
 EMAIL_ENDPOINT                     = "xxxx@gmail.com"
 ENABLE_FEEDBACK_SUBMISSION         = "true"
 CIDR_BLOCK                         = "11.0.0.0/16"
@@ -6,8 +6,7 @@ PRIVATE_SUBNETS                    = "6"
 PUBLIC_SUBNETS                     = "3"
 ENABLE_VPC_FLOW_LOGS_IN_CLOUDWATCH = true
 ENABLE_VPC_FLOW_LOGS_IN_BUCKET     = true
-kms_deletion_windows_in_days       = 7
 create_regional_waf                = true
 create_global_waf                  = true
-ENABLE_POINT_IN_TIME_RECOVERY      = true
-S3_LOGGING_BUCKET                  = "vap-test-s3-logging"
+ENABLE_POINT_IN_TIME_RECOVERY      = false
+S3_LOGGING_BUCKET                  = "vap-pprod-s3-logging"
