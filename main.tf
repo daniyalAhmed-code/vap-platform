@@ -17,6 +17,8 @@ module "dynamodb" {
   DEV_PORTAL_CUSTOMERS_TABLE_NAME          = local.DEV_PORTAL_CUSTOMERS_TABLE_NAME
   DEV_PORTAL_PRE_LOGIN_ACCOUNTS_TABLE_NAME = local.DEV_PORTAL_PRE_LOGIN_ACCOUNTS_TABLE_NAME
   DEV_PORTAL_FEEDBACK_TABLE_NAME           = local.DEV_PORTAL_FEEDBACK_TABLE_NAME
+  ENABLE_POINT_IN_TIME_RECOVERY            = var.ENABLE_POINT_IN_TIME_RECOVERY
+  KMS_KEY_ARN                              = module.kms.key_arn
 }
 
 module "sns" {
@@ -33,6 +35,8 @@ module "s3" {
   RESOURCE_PREFIX                = local.RESOURCE_PREFIX
   ENABLE_VPC_FLOW_LOGS_IN_BUCKET = var.ENABLE_VPC_FLOW_LOGS_IN_BUCKET
   CURRENT_ACCOUNT_ID             = data.aws_caller_identity.current.account_id
+  S3_LOGGING_BUCKET              = var.S3_LOGGING_BUCKET
+  KMS_KEY_ID                     = module.kms.key_id
 }
 
 module "vpc" {
@@ -56,6 +60,8 @@ module "policy" {
   IP_LIST_BUCKET      = module.s3.IP_LIST_BUCKET
   LAMBDA_ROLE_NAME    = module.roles.LAMBDA_ROLE_NAME
   FLOW_LOGS_ROLE_NAME = module.roles.FLOW_LOGS_ROLE_NAME
+  AWS_REGION          = local.AWS_REGION
+  CURRENT_ACCOUNT_ID  = local.CURRENT_ACCOUNT_ID
 }
 
 module "load_balancer" {
@@ -108,4 +114,26 @@ module "kms" {
   deletion_window_in_days = var.kms_deletion_windows_in_days
   enable_key_rotation     = true
   alias                   = "alias/vap-platform-key"
+}
+
+### WAF ###
+## Regional Waf
+module "waf_regional" {
+  create = var.create_regional_waf
+  source = "./modules/waf"
+
+  name        = "vap-waf-regional"
+  is_regional = true
+}
+
+## Global Waf
+module "waf_global" {
+  create = var.create_global_waf
+  source = "./modules/waf"
+
+  name        = "vap-waf-global"
+  is_regional = false
+  providers = {
+    aws = aws.global_region
+  }
 }

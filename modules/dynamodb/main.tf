@@ -8,7 +8,15 @@ resource "aws_dynamodb_table" "dynamo-dev-portal-customer-db-table" {
     name = "Id"
     type = "S"
   }
-
+  
+  point_in_time_recovery {
+    enabled = var.ENABLE_POINT_IN_TIME_RECOVERY
+  }
+  
+  server_side_encryption {
+    enabled = false
+    kms_key_arn = var.KMS_KEY_ARN
+  }
 }
 
 resource "aws_dynamodb_table" "dynamo-pre-login-accounts-db-table" {
@@ -21,6 +29,15 @@ resource "aws_dynamodb_table" "dynamo-pre-login-accounts-db-table" {
   attribute {
     name = "UserId"
     type = "S"
+  }
+  
+  point_in_time_recovery {
+    enabled = var.ENABLE_POINT_IN_TIME_RECOVERY
+  }
+  
+  server_side_encryption {
+    enabled = false
+    kms_key_arn = var.KMS_KEY_ARN
   }
 
 }
@@ -37,7 +54,7 @@ resource "aws_dynamodb_table" "dynamo-dev-portal-feedback-db-table" {
     name = "Id"
     type = "S"
   }
-
+  
   global_secondary_index {
     name            = "FeedbackIdIndex"
     hash_key        = "Id"
@@ -46,5 +63,13 @@ resource "aws_dynamodb_table" "dynamo-dev-portal-feedback-db-table" {
     projection_type = "KEYS_ONLY"
 
   }
+  
+  point_in_time_recovery {
+    enabled = var.ENABLE_POINT_IN_TIME_RECOVERY
+  }
+  
+  server_side_encryption {
+    enabled = false
+    kms_key_arn = var.KMS_KEY_ARN
+  }
 }
-
