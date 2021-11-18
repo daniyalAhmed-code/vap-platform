@@ -14,7 +14,7 @@ resource "aws_dynamodb_table" "dynamo-dev-portal-customer-db-table" {
   }
   
   server_side_encryption {
-    enabled = false
+    enabled = true
     kms_key_arn = var.KMS_KEY_ARN
   }
 }
@@ -36,7 +36,7 @@ resource "aws_dynamodb_table" "dynamo-pre-login-accounts-db-table" {
   }
   
   server_side_encryption {
-    enabled = false
+    enabled = true
     kms_key_arn = var.KMS_KEY_ARN
   }
 
@@ -69,7 +69,7 @@ resource "aws_dynamodb_table" "dynamo-dev-portal-feedback-db-table" {
   }
   
   server_side_encryption {
-    enabled = false
+    enabled = true
     kms_key_arn = var.KMS_KEY_ARN
   }
 }

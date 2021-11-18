@@ -6,20 +6,19 @@ resource "aws_s3_bucket" "dev_portal_s3_bucket" {
     enabled = true
   }
   
-  # server_side_encryption_configuration {
-  #   rule {
-  #     apply_server_side_encryption_by_default {
-  #       sse_algorithm     = "AES256"
-  #     }
-  #   }
-  # }
+   server_side_encryption_configuration {
+     rule {
+       apply_server_side_encryption_by_default {
+         sse_algorithm     = "AES256"
+       }
+     }
+   }
   
   logging {
     target_bucket = var.S3_LOGGING_BUCKET
     target_prefix = "${var.DEV_PORTAL_SITE_S3_BUCKET_NAME}/"
   }
 }
-
 resource "aws_s3_bucket_public_access_block" "dev_protal_bucket" {
   bucket = aws_s3_bucket.dev_portal_s3_bucket.id
 
@@ -37,13 +36,13 @@ resource "aws_s3_bucket" "artifact_s3_bucket" {
     enabled = true
   }
   
-  # server_side_encryption_configuration {
-  #   rule {
-  #     apply_server_side_encryption_by_default {
-  #       sse_algorithm     = "AES256"
-  #     }
-  #   }
-  # }
+   server_side_encryption_configuration {
+     rule {
+       apply_server_side_encryption_by_default {
+         sse_algorithm     = "AES256"
+       }
+     }
+   }
   
   logging {
     target_bucket = var.S3_LOGGING_BUCKET
@@ -68,13 +67,13 @@ resource "aws_s3_bucket" "ip_list_bucket" {
     enabled = true
   }
   
-  # server_side_encryption_configuration {
-  #   rule {
-  #     apply_server_side_encryption_by_default {
-  #       sse_algorithm     = "AES256"
-  #     }
-  #   }
-  # }
+   server_side_encryption_configuration {
+     rule {
+       apply_server_side_encryption_by_default {
+         sse_algorithm     = "AES256"
+       }
+     }
+   }
   
   logging {
     target_bucket = var.S3_LOGGING_BUCKET
@@ -100,13 +99,13 @@ resource "aws_s3_bucket" "vpc_flow_logs" {
     enabled = true
   }
   
-  # server_side_encryption_configuration {
-  #   rule {
-  #     apply_server_side_encryption_by_default {
-  #       sse_algorithm     = "AES256"
-  #     }
-  #   }
-  # }
+   server_side_encryption_configuration {
+     rule {
+       apply_server_side_encryption_by_default {
+         sse_algorithm     = "AES256"
+       }
+     }
+   }
   
   logging {
     target_bucket = var.S3_LOGGING_BUCKET
