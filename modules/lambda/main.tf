@@ -13,7 +13,9 @@ resource "aws_lambda_function" "lambda" {
 
   runtime = "python3.8"
   timeout = 300
-
+  tracing_config {
+    mode= "PassThrough"
+  }
   environment {
     variables = {
       ALB_DNS_NAME                      = var.ALB_DNS_NAME
