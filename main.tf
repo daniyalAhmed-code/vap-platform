@@ -104,6 +104,8 @@ module "cw" {
   LAMBDA_FUNCTION_ARN                = module.lambda.NLB_ALB_CONNECTOR_LAMBDA_ARN
   ENABLE_VPC_FLOW_LOGS_IN_CLOUDWATCH = var.ENABLE_VPC_FLOW_LOGS_IN_CLOUDWATCH
   CURRENT_ACCOUNT_ID                 = data.aws_caller_identity.current.account_id
+  KMS_KEY_ARN                        = module.kms.key_arn
+  depends_on = [module.policy]
 }
 
 module "kms" {

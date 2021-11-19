@@ -109,3 +109,35 @@ resource "aws_iam_role_policy_attachment" "flow_logs_role_policy_attachment" {
   role       = var.FLOW_LOGS_ROLE_NAME
   policy_arn = aws_iam_policy.vap_policy.arn
 }
+
+data "aws_iam_policy_document" "kms_key_policy" {
+  statement {
+    actions = ["kms:*"]
+    effect = "Allow"
+    principals {
+      type        = "AWS"
+      identifiers = ["arn:aws:iam::${var.CURRENT_ACCOUNT_ID}:root"]
+    }
+    resources = ["*"]
+  }
+  
+  statement {
+    actions = ["kms:*"]
+    effect = "Allow"
+    principals {
+      type        = "Service"
+      identifiers = ["logs.us-east-1.amazonaws.com", "logs.eu-central-1.amazonaws.com", "dynamodb.amazonaws.com", "delivery.logs.amazonaws.com", "vpc-flow-logs.amazonaws.com", "logs.amazonaws.com"]
+    }
+    resources = ["*"]
+  }
+  
+  statement {
+      actions = ["kms:Decrypt","kms:Encrypt"]
+      effect = "Allow"
+      principals {
+        type        = "AWS"
+        identifiers = ["*"]
+      }
+      resources = ["*"]
+  }
+} 
