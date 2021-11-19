@@ -24,5 +24,5 @@ resource "aws_cloudwatch_event_target" "trigger_nlb_alb_connector_target" {
 resource "aws_cloudwatch_log_group" "vpc_flow_logs" {
   count = var.ENABLE_VPC_FLOW_LOGS_IN_CLOUDWATCH ? 1 : 0
   name  = "${var.RESOURCE_PREFIX}-${var.CURRENT_ACCOUNT_ID}-logs"
-  # kms_key_id = var.KMS_KEY_ARN
+  kms_key_id = var.KMS_KEY_ARN
 }
