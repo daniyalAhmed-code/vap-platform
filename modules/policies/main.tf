@@ -130,14 +130,4 @@ data "aws_iam_policy_document" "kms_key_policy" {
     }
     resources = ["*"]
   }
-  
-  statement {
-      actions = ["kms:Decrypt","kms:Encrypt"]
-      effect = "Allow"
-      principals {
-        type        = "AWS"
-        identifiers = ["*"]
-      }
-      resources = ["*"]
-  }
 } 

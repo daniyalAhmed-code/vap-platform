@@ -6,13 +6,13 @@ resource "aws_s3_bucket" "dev_portal_s3_bucket" {
     enabled = true
   }
   
-  # server_side_encryption_configuration {
-  #   rule {
-  #     apply_server_side_encryption_by_default {
-  #       sse_algorithm     = "AES256"
-  #     }
-  #   }
-  # }
+   server_side_encryption_configuration {
+     rule {
+       apply_server_side_encryption_by_default {
+         sse_algorithm     = "AES256"
+       }
+     }
+   }
   
   logging {
     target_bucket = var.S3_LOGGING_BUCKET
@@ -37,13 +37,13 @@ resource "aws_s3_bucket" "artifact_s3_bucket" {
     enabled = true
   }
   
-  # server_side_encryption_configuration {
-  #   rule {
-  #     apply_server_side_encryption_by_default {
-  #       sse_algorithm     = "AES256"
-  #     }
-  #   }
-  # }
+   server_side_encryption_configuration {
+     rule {
+       apply_server_side_encryption_by_default {
+         sse_algorithm     = "AES256"
+       }
+     }
+   }
   
   logging {
     target_bucket = var.S3_LOGGING_BUCKET
@@ -68,13 +68,13 @@ resource "aws_s3_bucket" "ip_list_bucket" {
     enabled = true
   }
   
-  # server_side_encryption_configuration {
-  #   rule {
-  #     apply_server_side_encryption_by_default {
-  #       sse_algorithm     = "AES256"
-  #     }
-  #   }
-  # }
+   server_side_encryption_configuration {
+     rule {
+       apply_server_side_encryption_by_default {
+         sse_algorithm     = "AES256"
+       }
+     }
+   }
   
   logging {
     target_bucket = var.S3_LOGGING_BUCKET
@@ -100,13 +100,14 @@ resource "aws_s3_bucket" "vpc_flow_logs" {
     enabled = true
   }
   
-  # server_side_encryption_configuration {
-  #   rule {
-  #     apply_server_side_encryption_by_default {
-  #       sse_algorithm     = "AES256"
-  #     }
-  #   }
-  # }
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        kms_master_key_id = var.KMS_KEY_ARN
+        sse_algorithm     = "aws:kms"
+      }
+    }
+  }
   
   logging {
     target_bucket = var.S3_LOGGING_BUCKET

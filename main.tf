@@ -37,6 +37,8 @@ module "s3" {
   CURRENT_ACCOUNT_ID             = data.aws_caller_identity.current.account_id
   S3_LOGGING_BUCKET              = var.S3_LOGGING_BUCKET
   KMS_KEY_ID                     = module.kms.key_id
+  KMS_KEY_ARN                    = module.kms.key_arn
+
 }
 
 module "vpc" {
@@ -116,6 +118,8 @@ module "kms" {
   deletion_window_in_days = var.kms_deletion_windows_in_days
   enable_key_rotation     = true
   alias                   = "alias/vap-platform-key"
+  policy                  = module.policy.KMS_KEY_POLICY
+
 }
 
 ### WAF ###
