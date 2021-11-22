@@ -73,3 +73,33 @@ resource "aws_dynamodb_table" "dynamo-dev-portal-feedback-db-table" {
     kms_key_arn = var.KMS_KEY_ARN
   }
 }
+
+resource "aws_dynamodb_table" "dynamo-customer-request-logs-db-table" {
+  name           = var.DEV_PORTAL_CUSTOMER_REQUEST_LOGS_TABLE_NAME
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 5
+  write_capacity = 5
+  hash_key       = "RequestId"
+  range_key      = "Username_RequestTime"
+
+
+  attribute {
+    name = "UserId"
+    type = "S"
+  }
+  
+  attribute {
+    name = "Username_RequestTime"
+    type = "S"
+  }
+  
+  point_in_time_recovery {
+    enabled = var.ENABLE_POINT_IN_TIME_RECOVERY
+  }
+  
+  server_side_encryption {
+    enabled = true
+    kms_key_arn = var.KMS_KEY_ARN
+  }
+
+}
