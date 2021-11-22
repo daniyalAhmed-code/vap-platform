@@ -84,7 +84,7 @@ resource "aws_dynamodb_table" "dynamo-customer-request-logs-db-table" {
 
 
   attribute {
-    name = "UserId"
+    name = "RequestId"
     type = "S"
   }
   
