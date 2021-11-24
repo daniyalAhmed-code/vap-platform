@@ -45,6 +45,14 @@ output "kms_key_arn" {
   value       = module.kms.key_arn
 }
 
+output "DEV_PORTAL_CUSTOMER_REQUEST_LOGS_TABLE_NAME"{
+  value = module.dynamodb.DEV_PORTAL_CUSTOMER_REQUEST_LOGS_TABLE_NAME
+}
+
+output "DEV_PORTAL_CUSTOMER_REQUEST_LOGS_TABLE_ARN"{
+  value = module.dynamodb.DEV_PORTAL_CUSTOMER_REQUEST_LOGS_TABLE_ARN
+}
+
 ### WAF outpus
 output "regional_waf_id" {
   description = "Regional WAF ID"
