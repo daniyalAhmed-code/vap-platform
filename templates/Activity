@@ -1,0 +1,1397 @@
+"components":
+  "schemas":
+    "Activity":
+      "additionalProperties": false
+      "description": "The root entity for Activity ."
+      "properties":
+        "@baseType":
+          "description": "When sub-classing, this defines the super-class"
+          "type": "string"
+        "@schemaLocation":
+          "description": "A URI to a JSON-Schema file that defines additional attributes
+            and relationships"
+          "format": "uri"
+          "type": "string"
+        "@type":
+          "description": "When sub-classing, this defines the sub-class entity name"
+          "type": "string"
+        "actualDate":
+          "description": "Actual date of the milestone"
+          "example": "2021-01-30"
+          "format": "date"
+          "type": "string"
+        "forecastDate":
+          "description": "Forecast date of the milestone"
+          "example": "2021-01-30"
+          "format": "date"
+          "type": "string"
+        "href":
+          "description": "Unique reference of the Activity"
+          "type": "string"
+        "id":
+          "description": "Unique identifier of the Activity"
+          "example": "a3S0D000000WhCGUA0"
+          "maxLength": 18
+          "minLength": 1
+          "type": "string"
+        "name":
+          "description": "Name of the Activity"
+          "maxLength": 80
+          "minLength": 1
+          "type": "string"
+        "projectId":
+          "description": "Id of the Project"
+          "maxLength": 18
+          "minLength": 1
+          "type": "string"
+        "projectName":
+          "description": "Name of the Project"
+          "maxLength": 80
+          "minLength": 1
+          "type": "string"
+        "type":
+          "description": "Type of the activity will always be a Milestone"
+          "example": "Milestone"
+          "type": "string"
+      "type": "object"
+    "ActivityCreate":
+      "additionalProperties": false
+      "description": "The root entity for Activity . Skipped properties - id, href"
+      "properties":
+        "@baseType":
+          "description": "When sub-classing, this defines the super-class"
+          "type": "string"
+        "@schemaLocation":
+          "description": "A URI to a JSON-Schema file that defines additional attributes
+            and relationships"
+          "format": "uri"
+          "type": "string"
+        "@type":
+          "description": "When sub-classing, this defines the sub-class entity name"
+          "type": "string"
+        "actualDate":
+          "description": "Actual date of the milestone"
+          "example": "2021-01-30"
+          "format": "date"
+          "type": "string"
+        "forecastDate":
+          "description": "Forecast date of the milestone"
+          "example": "2021-01-30"
+          "format": "date"
+          "type": "string"
+        "name":
+          "description": "Name of the Activity"
+          "maxLength": 80
+          "minLength": 1
+          "type": "string"
+        "projectId":
+          "description": "Id of the Project"
+          "maxLength": 18
+          "minLength": 1
+          "type": "string"
+        "projectName":
+          "description": "Name of the Project"
+          "maxLength": 80
+          "minLength": 1
+          "type": "string"
+        "type":
+          "description": "Type of the activity will always be a Milestone"
+          "example": "Milestone"
+          "type": "string"
+      "required":
+      - "name"
+      - "projectId"
+      - "projectName"
+      "type": "object"
+    "ActivityUpdate":
+      "additionalProperties": false
+      "description": "The root entity for Activity . Skipped properties - id, href"
+      "properties":
+        "@baseType":
+          "description": "When sub-classing, this defines the super-class"
+          "type": "string"
+        "@schemaLocation":
+          "description": "A URI to a JSON-Schema file that defines additional attributes
+            and relationships"
+          "format": "uri"
+          "type": "string"
+        "@type":
+          "description": "When sub-classing, this defines the sub-class entity name"
+          "type": "string"
+        "actualDate":
+          "description": "Actual date of the milestone"
+          "example": "2021-01-30"
+          "format": "date"
+          "type": "string"
+        "forecastDate":
+          "description": "Forecast date of the milestone"
+          "example": "2021-01-30"
+          "format": "date"
+          "type": "string"
+        "name":
+          "description": "Name of the Activity"
+          "maxLength": 80
+          "minLength": 1
+          "type": "string"
+        "projectId":
+          "description": "Id of the Project"
+          "maxLength": 18
+          "minLength": 1
+          "type": "string"
+        "projectName":
+          "description": "Name of the Project"
+          "maxLength": 80
+          "minLength": 1
+          "type": "string"
+        "type":
+          "description": "Type of the activity will always be a Milestone"
+          "example": "Milestone"
+          "type": "string"
+      "required":
+      - "name"
+      - "projectId"
+      - "projectName"
+      "type": "object"
+    "Error":
+      "additionalProperties": false
+      "properties":
+        "@baseType":
+          "description": "When sub-classing, this defines the super-class."
+          "type": "string"
+        "@schemaLocation":
+          "description": "A URI to a JSON-Schema file that defines additional attributes
+            and relationships"
+          "format": "uri"
+          "type": "string"
+        "@type":
+          "description": "When sub-classing, this defines the sub-class entity name."
+          "type": "string"
+        "code":
+          "description": "Application relevant detail, defined in the API or a common
+            list."
+          "type": "string"
+        "message":
+          "description": "More details and corrective actions related to the error
+            which can be shown to a client user."
+          "type": "string"
+        "reason":
+          "description": "Explanation of the reason for the error which can be shown
+            to a client user."
+          "type": "string"
+        "referenceError":
+          "description": "URI of documentation describing the error."
+          "format": "uri"
+          "type": "string"
+        "status":
+          "description": "HTTP Error code extension"
+          "type": "string"
+      "required":
+      - "code"
+      - "reason"
+      "type": "object"
+  "securitySchemes":
+    "authorizer":
+      "in": "header"
+      "name": "Authorization"
+      "type": "apiKey"
+      "x-amazon-apigateway-authorizer":
+        "authorizerCredentials": "arn:aws:iam::489994096722:role/vap-dani-s-test-apigateway-lambda-execution-role"
+        "authorizerResultTtlInSeconds": 0
+        "authorizerUri": "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:489994096722:function:vap-dani-s-test-api-key-authoriser/invocations"
+        "identitySource": "method.request.header.x-api-key"
+        "type": "request"
+      "x-amazon-apigateway-authtype": "custom"
+"info":
+  "description": "This API provides operations to create, update, get and delete activities
+    related to the project."
+  "title": "Activity"
+  "version": "1.0.0"
+"openapi": "3.0.0"
+"paths":
+  "/":
+    "options":
+      "responses":
+        "200":
+          "content":
+            "application/json":
+              "schema":
+                "$ref": "#/components/schemas/Empty"
+          "description": "200 response"
+          "headers":
+            "Access-Control-Allow-Headers":
+              "schema":
+                "type": "string"
+            "Access-Control-Allow-Methods":
+              "schema":
+                "type": "string"
+            "Access-Control-Allow-Origin":
+              "schema":
+                "type": "string"
+      "x-amazon-apigateway-integration":
+        "passthroughBehavior": "when_no_match"
+        "requestTemplates":
+          "application/json": "{\"statusCode\": 200}"
+        "responses":
+          "default":
+            "responseParameters":
+              "method.response.header.Access-Control-Allow-Headers": "'*'"
+              "method.response.header.Access-Control-Allow-Methods": "'*'"
+              "method.response.header.Access-Control-Allow-Origin": "'*'"
+            "statusCode": "200"
+        "type": "mock"
+    "post":
+      "description": "This operation creates an Activity  entity"
+      "operationId": "createActivity"
+      "requestBody":
+        "content":
+          "application/json":
+            "schema":
+              "$ref": "#/components/schemas/ActivityCreate"
+        "description": "The Activity  to be created"
+        "required": true
+      "responses":
+        "201":
+          "content":
+            "application/json":
+              "schema":
+                "$ref": "#/components/schemas/Activity"
+          "description": "Created"
+        "400":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Bad Request"
+        "401":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Unauthorized"
+        "403":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Forbidden"
+        "405":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Method Not Allowed"
+        "409":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Conflict"
+        "500":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Internal Server Error"
+      "security":
+      - "authorizer": []
+      "summary": "Creates an Activity"
+      "x-amazon-apigateway-integration":
+        "credentials": "arn:aws:iam::489994096722:role/vap-dani-s-test-apigateway-lambda-execution-role"
+        "httpMethod": "POST"
+        "passthroughBehavior": "when_no_templates"
+        "requestTemplates":
+          "application/json": |-
+            #set($inputRoot = $input.path('$'))
+            #set($allParams = $input.params())
+            {
+              "body-json" : {
+              #foreach($key in $inputRoot.keySet())
+                "$key": "$inputRoot[$key]"
+                #if( $foreach.hasNext ),#end
+              #end
+              },
+              "params" : {
+              #foreach($type in $allParams.keySet())
+                #set($params = $allParams.get($type))
+              "$type" : {
+                #foreach($paramName in $params.keySet())
+                "$paramName" : "$util.escapeJavaScript($params.get($paramName))"
+                #if($foreach.hasNext),#end
+                #end
+              }
+                #if($foreach.hasNext),#end
+              #end
+              },
+              "context" : {
+                "http-method" : "$context.httpMethod",
+                "request-id" : "$context.requestId",
+                "resource-path" : "$context.resourcePath",
+                "path" : "$context.path",
+                "user_id": "$context.authorizer.user_id"
+              }
+            }
+        "responses":
+          "default":
+            "responseTemplates":
+              "application/json": |-
+                #set($inputRoot = $input.path('$'))
+                #if($inputRoot.statusCode != "")
+                    #set($context.responseOverride.status = $inputRoot.statusCode)
+                    $input.json("$.body")
+                #else
+                    {
+                      "code": "ERR001",
+                      "reason": "Internal Server Error"
+                      "message": $input.json("$.errorMessage")
+                    }
+                #end
+                #set($context.responseOverride.header.access-control-allow-origin = "*")
+            "statusCode": "500"
+        "type": "aws"
+        "uri": "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:489994096722:function:device-type-lambda/invocations"
+      "x-amazon-apigateway-request-validator": "full"
+  "/{id}":
+    "delete":
+      "description": "This operation deletes an Activity  entity"
+      "operationId": "deleteActivity"
+      "parameters":
+      - "description": "Identifier of the Activity"
+        "in": "path"
+        "name": "id"
+        "required": true
+        "schema":
+          "type": "string"
+      "responses":
+        "204":
+          "description": "Deleted"
+        "400":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Bad Request"
+        "401":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Unauthorized"
+        "403":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Forbidden"
+        "405":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Method Not Allowed"
+        "409":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Conflict"
+        "500":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Internal Server Error"
+      "security":
+      - "authorizer": []
+      "summary": "Deletes an Activity"
+      "x-amazon-apigateway-integration":
+        "credentials": "arn:aws:iam::489994096722:role/vap-dani-s-test-apigateway-lambda-execution-role"
+        "httpMethod": "POST"
+        "passthroughBehavior": "when_no_templates"
+        "requestTemplates":
+          "application/json": |-
+            #set($inputRoot = $input.path('$'))
+            #set($allParams = $input.params())
+            {
+              "body-json" : {
+              #foreach($key in $inputRoot.keySet())
+                "$key": "$inputRoot[$key]"
+                #if( $foreach.hasNext ),#end
+              #end
+              },
+              "params" : {
+              #foreach($type in $allParams.keySet())
+                #set($params = $allParams.get($type))
+              "$type" : {
+                #foreach($paramName in $params.keySet())
+                "$paramName" : "$util.escapeJavaScript($params.get($paramName))"
+                #if($foreach.hasNext),#end
+                #end
+              }
+                #if($foreach.hasNext),#end
+              #end
+              },
+              "context" : {
+                "http-method" : "$context.httpMethod",
+                "request-id" : "$context.requestId",
+                "resource-path" : "$context.resourcePath",
+                "path" : "$context.path",
+                "user_id": "$context.authorizer.user_id"
+              }
+            }
+        "responses":
+          "default":
+            "responseTemplates":
+              "application/json": |-
+                #set($inputRoot = $input.path('$'))
+                #if($inputRoot.statusCode != "")
+                    #set($context.responseOverride.status = $inputRoot.statusCode)
+                    $input.json("$.body")
+                #else
+                    {
+                      "code": "ERR001",
+                      "reason": "Internal Server Error"
+                      "message": $input.json("$.errorMessage")
+                    }
+                #end
+                #set($context.responseOverride.header.access-control-allow-origin = "*")
+            "statusCode": "500"
+        "type": "aws"
+        "uri": "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:489994096722:function:device-type-lambda/invocations"
+      "x-amazon-apigateway-request-validator": "full"
+    "get":
+      "description": "This operation retrieves an Activity entity. Attribute selection
+        is enabled for all first level attributes."
+      "operationId": "getActivity"
+      "parameters":
+      - "description": "Identifier of the Activity"
+        "in": "path"
+        "name": "id"
+        "required": true
+        "schema":
+          "type": "string"
+      - "description": "Comma-separated properties to be provided in response"
+        "in": "query"
+        "name": "fields"
+        "required": false
+        "schema":
+          "type": "string"
+      "responses":
+        "200":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Activity"
+                "type": "array"
+          "description": "Success"
+        "400":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Bad Request"
+        "401":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Unauthorized"
+        "403":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Forbidden"
+        "405":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Method Not Allowed"
+        "409":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Conflict"
+        "500":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Internal Server Error"
+      "security":
+      - "authorizer": []
+      "summary": "Retrieves an Activity by Id"
+      "x-amazon-apigateway-integration":
+        "credentials": "arn:aws:iam::489994096722:role/vap-dani-s-test-apigateway-lambda-execution-role"
+        "httpMethod": "POST"
+        "passthroughBehavior": "when_no_templates"
+        "requestTemplates":
+          "application/json": |-
+            #set($inputRoot = $input.path('$'))
+            #set($allParams = $input.params())
+            {
+              "body-json" : {
+              #foreach($key in $inputRoot.keySet())
+                "$key": "$inputRoot[$key]"
+                #if( $foreach.hasNext ),#end
+              #end
+              },
+              "params" : {
+              #foreach($type in $allParams.keySet())
+                #set($params = $allParams.get($type))
+              "$type" : {
+                #foreach($paramName in $params.keySet())
+                "$paramName" : "$util.escapeJavaScript($params.get($paramName))"
+                #if($foreach.hasNext),#end
+                #end
+              }
+                #if($foreach.hasNext),#end
+              #end
+              },
+              "context" : {
+                "http-method" : "$context.httpMethod",
+                "request-id" : "$context.requestId",
+                "resource-path" : "$context.resourcePath",
+                "path" : "$context.path",
+                "user_id": "$context.authorizer.user_id"
+              }
+            }
+        "responses":
+          "default":
+            "responseTemplates":
+              "application/json": |-
+                #set($inputRoot = $input.path('$'))
+                #if($inputRoot.statusCode != "")
+                    #set($context.responseOverride.status = $inputRoot.statusCode)
+                    $input.json("$.body")
+                #else
+                    {
+                      "code": "ERR001",
+                      "reason": "Internal Server Error"
+                      "message": $input.json("$.errorMessage")
+                    }
+                #end
+                #set($context.responseOverride.header.access-control-allow-origin = "*")
+            "statusCode": "500"
+        "type": "aws"
+        "uri": "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:489994096722:function:device-type-lambda/invocations"
+      "x-amazon-apigateway-request-validator": "full"
+    "options":
+      "responses":
+        "200":
+          "content":
+            "application/json":
+              "schema":
+                "$ref": "#/components/schemas/Empty"
+          "description": "200 response"
+          "headers":
+            "Access-Control-Allow-Headers":
+              "schema":
+                "type": "string"
+            "Access-Control-Allow-Methods":
+              "schema":
+                "type": "string"
+            "Access-Control-Allow-Origin":
+              "schema":
+                "type": "string"
+      "x-amazon-apigateway-integration":
+        "passthroughBehavior": "when_no_match"
+        "requestTemplates":
+          "application/json": "{\"statusCode\": 200}"
+        "responses":
+          "default":
+            "responseParameters":
+              "method.response.header.Access-Control-Allow-Headers": "'*'"
+              "method.response.header.Access-Control-Allow-Methods": "'*'"
+              "method.response.header.Access-Control-Allow-Origin": "'*'"
+            "statusCode": "200"
+        "type": "mock"
+    "patch":
+      "description": "This operation updates partially an Activity  entity"
+      "operationId": "patchActivity"
+      "parameters":
+      - "description": "Identifier of the Activity"
+        "in": "path"
+        "name": "id"
+        "required": true
+        "schema":
+          "type": "string"
+      "requestBody":
+        "content":
+          "application/json":
+            "schema":
+              "$ref": "#/components/schemas/ActivityUpdate"
+        "description": "The Activity to be updated"
+        "required": true
+      "responses":
+        "200":
+          "content":
+            "application/json":
+              "schema":
+                "$ref": "#/components/schemas/Activity"
+          "description": "Updated"
+        "400":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Bad Request"
+        "401":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Unauthorized"
+        "403":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Forbidden"
+        "405":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Method Not Allowed"
+        "409":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Conflict"
+        "500":
+          "content":
+            "application/json":
+              "schema":
+                "items":
+                  "$ref": "#/components/schemas/Error"
+          "description": "Internal Server Error"
+      "security":
+      - "authorizer": []
+      "summary": "Updates partially an Activity"
+      "x-amazon-apigateway-integration":
+        "credentials": "arn:aws:iam::489994096722:role/vap-dani-s-test-apigateway-lambda-execution-role"
+        "httpMethod": "POST"
+        "passthroughBehavior": "when_no_templates"
+        "requestTemplates":
+          "application/json": |-
+            #set($inputRoot = $input.path('$'))
+            #set($allParams = $input.params())
+            {
+              "body-json" : {
+              #foreach($key in $inputRoot.keySet())
+                "$key": "$inputRoot[$key]"
+                #if( $foreach.hasNext ),#end
+              #end
+              },
+              "params" : {
+              #foreach($type in $allParams.keySet())
+                #set($params = $allParams.get($type))
+              "$type" : {
+                #foreach($paramName in $params.keySet())
+                "$paramName" : "$util.escapeJavaScript($params.get($paramName))"
+                #if($foreach.hasNext),#end
+                #end
+              }
+                #if($foreach.hasNext),#end
+              #end
+              },
+              "context" : {
+                "http-method" : "$context.httpMethod",
+                "request-id" : "$context.requestId",
+                "resource-path" : "$context.resourcePath",
+                "path" : "$context.path",
+                "user_id": "$context.authorizer.user_id"
+              }
+            }
+        "responses":
+          "default":
+            "responseTemplates":
+              "application/json": |-
+                #set($inputRoot = $input.path('$'))
+                #if($inputRoot.statusCode != "")
+                    #set($context.responseOverride.status = $inputRoot.statusCode)
+                    $input.json("$.body")
+                #else
+                    {
+                      "code": "ERR001",
+                      "reason": "Internal Server Error"
+                      "message": $input.json("$.errorMessage")
+                    }
+                #end
+                #set($context.responseOverride.header.access-control-allow-origin = "*")
+            "statusCode": "500"
+        "type": "aws"
+        "uri": "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:489994096722:function:device-type-lambda/invocations"
+      "x-amazon-apigateway-request-validator": "full"
+"servers":
+- "url": "https://api.test.vantageapi.com/{basePath}"
+  "variables":
+    "basePath":
+      "default": "activity"
+  "x-amazon-apigateway-endpoint-configuration":
+    "disableExecuteApiEndpoint": true
+"x-amazon-apigateway-gateway-responses":
+  "ACCESS_DENIED":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR002",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 403
+  "API_CONFIGURATION_ERROR":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR003",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 500
+  "AUTHORIZER_CONFIGURATION_ERROR":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR004",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 500
+  "AUTHORIZER_FAILURE":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR005",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 500
+  "BAD_REQUEST_BODY":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR006",
+          "reason": $context.error.messageString,
+          "message": $context.error.validationErrorString
+        }
+    "statusCode": 400
+  "BAD_REQUEST_PARAMETERS":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR007",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 400
+  "DEFAULT_4XX":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR008",
+          "reason": $context.error.messageString
+        }
+  "DEFAULT_5XX":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR009",
+          "reason": $context.error.messageString
+        }
+  "EXPIRED_TOKEN":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR010",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 403
+  "INTEGRATION_FAILURE":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR011",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 504
+  "INTEGRATION_TIMEOUT":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR012",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 504
+  "INVALID_API_KEY":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR013",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 403
+  "INVALID_SIGNATURE":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR014",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 403
+  "MISSING_AUTHENTICATION_TOKEN":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR015",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 403
+  "QUOTA_EXCEEDED":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR016",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 429
+  "REQUEST_TOO_LARGE":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR017",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 413
+  "RESOURCE_NOT_FOUND":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR018",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 404
+  "THROTTLED":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR019",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 429
+  "UNAUTHORIZED":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR020",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 401
+  "UNSUPPORTED_MEDIA_TYPE":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR021",
+          "reason": $context.error.messageString
+        }
+    "statusCode": 415
+  "WAF_FILTERED":
+    "responseTemplates":
+      "application/json": |-
+        {
+          "code": "ERR022",
+          "reason": $context.error.messageString
+        }
+    "security":
+    - "authorizer": []
+    "statusCode": 403
+"x-amazon-apigateway-request-validator": "full"
+"x-amazon-apigateway-request-validators":
+  "body-only":
+    "validateRequestBody": true
+    "validateRequestParameters": false
+  "full":
+    "validateRequestBody": true
+    "validateRequestParameters": true
+"x-definitions":
+  "Amazon":
+    "x-amazon-apigateway-gateway-responses":
+      "ACCESS_DENIED":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR002",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 403
+      "API_CONFIGURATION_ERROR":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR003",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 500
+      "AUTHORIZER_CONFIGURATION_ERROR":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR004",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 500
+      "AUTHORIZER_FAILURE":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR005",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 500
+      "BAD_REQUEST_BODY":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR006",
+              "reason": $context.error.messageString,
+              "message": $context.error.validationErrorString
+            }
+        "statusCode": 400
+      "BAD_REQUEST_PARAMETERS":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR007",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 400
+      "DEFAULT_4XX":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR008",
+              "reason": $context.error.messageString
+            }
+      "DEFAULT_5XX":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR009",
+              "reason": $context.error.messageString
+            }
+      "EXPIRED_TOKEN":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR010",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 403
+      "INTEGRATION_FAILURE":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR011",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 504
+      "INTEGRATION_TIMEOUT":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR012",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 504
+      "INVALID_API_KEY":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR013",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 403
+      "INVALID_SIGNATURE":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR014",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 403
+      "MISSING_AUTHENTICATION_TOKEN":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR015",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 403
+      "QUOTA_EXCEEDED":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR016",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 429
+      "REQUEST_TOO_LARGE":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR017",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 413
+      "RESOURCE_NOT_FOUND":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR018",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 404
+      "THROTTLED":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR019",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 429
+      "UNAUTHORIZED":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR020",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 401
+      "UNSUPPORTED_MEDIA_TYPE":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR021",
+              "reason": $context.error.messageString
+            }
+        "statusCode": 415
+      "WAF_FILTERED":
+        "responseTemplates":
+          "application/json": |-
+            {
+              "code": "ERR022",
+              "reason": $context.error.messageString
+            }
+        "security":
+        - "authorizer": []
+        "statusCode": 403
+    "x-amazon-apigateway-integration":
+      "credentials": "arn:aws:iam::489994096722:role/vap-dani-s-test-apigateway-lambda-execution-role"
+      "httpMethod": "POST"
+      "passthroughBehavior": "when_no_templates"
+      "requestTemplates":
+        "application/json": |-
+          #set($inputRoot = $input.path('$'))
+          #set($allParams = $input.params())
+          {
+            "body-json" : {
+            #foreach($key in $inputRoot.keySet())
+              "$key": "$inputRoot[$key]"
+              #if( $foreach.hasNext ),#end
+            #end
+            },
+            "params" : {
+            #foreach($type in $allParams.keySet())
+              #set($params = $allParams.get($type))
+            "$type" : {
+              #foreach($paramName in $params.keySet())
+              "$paramName" : "$util.escapeJavaScript($params.get($paramName))"
+              #if($foreach.hasNext),#end
+              #end
+            }
+              #if($foreach.hasNext),#end
+            #end
+            },
+            "context" : {
+              "http-method" : "$context.httpMethod",
+              "request-id" : "$context.requestId",
+              "resource-path" : "$context.resourcePath",
+              "path" : "$context.path",
+              "user_id": "$context.authorizer.user_id"
+            }
+          }
+      "responses":
+        "default":
+          "responseTemplates":
+            "application/json": |-
+              #set($inputRoot = $input.path('$'))
+              #if($inputRoot.statusCode != "")
+                  #set($context.responseOverride.status = $inputRoot.statusCode)
+                  $input.json("$.body")
+              #else
+                  {
+                    "code": "ERR001",
+                    "reason": "Internal Server Error"
+                    "message": $input.json("$.errorMessage")
+                  }
+              #end
+              #set($context.responseOverride.header.access-control-allow-origin = "*")
+          "statusCode": "500"
+      "type": "aws"
+      "uri": "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:489994096722:function:device-type-lambda/invocations"
+    "x-amazon-apigateway-request-validators":
+      "body-only":
+        "validateRequestBody": true
+        "validateRequestParameters": false
+      "full":
+        "validateRequestBody": true
+        "validateRequestParameters": true
+  "Methods":
+    "options":
+      "responses":
+        "200":
+          "content":
+            "application/json":
+              "schema":
+                "$ref": "#/components/schemas/Empty"
+          "description": "200 response"
+          "headers":
+            "Access-Control-Allow-Headers":
+              "schema":
+                "type": "string"
+            "Access-Control-Allow-Methods":
+              "schema":
+                "type": "string"
+            "Access-Control-Allow-Origin":
+              "schema":
+                "type": "string"
+      "x-amazon-apigateway-integration":
+        "passthroughBehavior": "when_no_match"
+        "requestTemplates":
+          "application/json": "{\"statusCode\": 200}"
+        "responses":
+          "default":
+            "responseParameters":
+              "method.response.header.Access-Control-Allow-Headers": "'*'"
+              "method.response.header.Access-Control-Allow-Methods": "'*'"
+              "method.response.header.Access-Control-Allow-Origin": "'*'"
+            "statusCode": "200"
+        "type": "mock"
+  "Parameters":
+    "fields":
+      "description": "Comma-separated properties to be provided in response"
+      "in": "query"
+      "name": "fields"
+      "schema":
+        "type": "string"
+    "next":
+      "description": "Next Records URL"
+      "in": "query"
+      "name": "next"
+      "required": false
+      "schema":
+        "type": "string"
+  "schemas":
+    "DeviceType":
+      "DeviceTypeAtType":
+        "@type":
+          "description": "When sub-classing, this defines the sub-class entity name"
+          "type": "string"
+      "DeviceTypeHref":
+        "href":
+          "description": "Unique reference of the Device Type"
+          "type": "string"
+      "DeviceTypeId":
+        "id":
+          "description": "Unique identifier of the Device Type"
+          "example": "a3S0D000000WhCGUA0"
+          "maxLength": 18
+          "minLength": 1
+          "type": "string"
+      "DeviceTypeMarket":
+        "market":
+          "description": "Market this item belongs to."
+          "enum":
+          - "CZ"
+          - "DE"
+          - "ES"
+          - "GR"
+          - "HU"
+          - "IE"
+          - "PT"
+          - "RO"
+          - "VF"
+          "example": "PT"
+          "type": "string"
+      "DeviceTypeName":
+        "name":
+          "description": "Unique Identification. The MNO short name will be add automatically
+            before the device type name."
+          "example": "VFDE - Device Type Name"
+          "maxLength": 73
+          "minLength": 1
+          "type": "string"
+      "DeviceTypeOtherProperties":
+        "beginOfLife":
+          "description": "Date this item was manufactured or certificate"
+          "example": "2021-01-30T08:30:00Z"
+          "format": "date-time"
+          "type": "string"
+        "category":
+          "description": "Grouping of similar Items, enabling filtering and searching"
+          "example": "Tower"
+          "type": "string"
+        "coolingCapacity":
+          "description": "TGE cooling capacity of the item in British Temperature
+            Unit (BTU - 1 Watt = 0,29351 BTU). Number (16 int, 2 decimal)"
+          "example": null
+          "format": "double"
+          "type": "number"
+        "dimensionHeight":
+          "description": "The Height of the item. Height, Width, Depth and Diameter
+            need to have the same dimension unit, as fixed in the field \"General
+            Dimensions Unit\". Number (16 int, 2 decimal)"
+          "example": null
+          "format": "double"
+          "type": "number"
+        "dimensionLength":
+          "description": "Length of the Item (using Dimensions Unit). Number (16 int,
+            2 decimal)"
+          "example": null
+          "format": "double"
+          "type": "number"
+        "dimensionUnit":
+          "description": "The unit of measure for the dimensions of the items fields
+            height, width, and depth"
+          "enum":
+          - "in"
+          - "ft"
+          - "mn"
+          - "cm"
+          - "m"
+          "example": "cm"
+          "type": "string"
+        "dimensionWeight":
+          "description": "The weight of the item in kilograms. Number (16 int, 2 decimal)"
+          "example": null
+          "format": "double"
+          "type": "number"
+        "dimensionWidth":
+          "description": "The Width of the item. Width, Height, Depth and Diameter
+            need to have the same dimension unit, as fixed in the field \"General
+            Dimensions Unit\". Number (16 int, 2 decimal)"
+          "example": null
+          "format": "double"
+          "type": "number"
+        "endOfLife":
+          "description": "The expiration date of this item"
+          "example": "2021-01-30T08:30:00Z"
+          "format": "date-time"
+          "type": "string"
+        "endOfService":
+          "description": "Date that the item has been discontinued. End of Service
+            of this item. If applicable"
+          "example": "2021-01-30T08:30:00Z"
+          "format": "date-time"
+          "type": "string"
+        "powerConsumption":
+          "description": "Maximum power consumption of an item (in Watt) for calculation
+            of total power supply and total heat load. Number (12 int, 2 decimal)"
+          "example": null
+          "format": "double"
+          "type": "number"
+        "primaryUom":
+          "description": "Unit of measure used when the item is consumed"
+          "enum":
+          - "Each"
+          - "Box"
+          - "Feet"
+          - "Meters"
+          - "Hours"
+          - "Days"
+          "example": "Each"
+          "type": "string"
+        "status":
+          "description": "Indicates whether the item is available for use, or whether
+            it is available for use under special permission from the lifecycle manager"
+          "enum":
+          - "Yes"
+          - "No"
+          - "Yes with confirmation from Lifecycle Manager"
+          "example": true
+          "type": "string"
+        "subcategory":
+          "description": "Grouping within the parent category"
+          "example": "Concrete Tower"
+          "type": "string"
+        "subtype":
+          "description": "Field that falls within the hierarchy of the \"Type\" chosen
+            for this record"
+          "example": null
+          "maxLength": 155
+          "type": "string"
+        "trackingMethod":
+          "description": "Indicates whether the item is available for use, or whether
+            it is available for use under special permission from the lifecycle manager"
+          "enum":
+          - "Uniquely Tracked"
+          - "Quantity Tracked"
+          - "Container Tracked"
+          "example": "Container Tracked"
+          "type": "string"
+        "type":
+          "description": "The type of Item. Only Material and Tool/Equipment can be
+            made Available for Receipt and require a Usage Type and Tracking Method.
+            Other Types (Labor, Service, Expense) cannot use those fields"
+          "enum":
+          - "Material"
+          - "Tool/Equipment"
+          - "Labor"
+          - "Service"
+          - "Expense"
+          - "Standard System"
+          "example": "Material"
+          "type": "string"
+        "usageType":
+          "description": "Indicates whether the item is available for use, or whether
+            it is available for use under special permission from the lifecycle manager"
+          "enum":
+          - "Installable"
+          - "Consumable"
+          - "Tool/Equipment"
+          "example": "Installable"
+          "type": "string"
+  "securitySchemes":
+    "authorizer":
+      "in": "header"
+      "name": "Authorization"
+      "type": "apiKey"
+      "x-amazon-apigateway-authorizer":
+        "authorizerCredentials": "arn:aws:iam::489994096722:role/vap-dani-s-test-apigateway-lambda-execution-role"
+        "authorizerResultTtlInSeconds": 0
+        "authorizerUri": "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:489994096722:function:vap-dani-s-test-api-key-authoriser/invocations"
+        "identitySource": "method.request.header.x-api-key"
+        "type": "request"
+      "x-amazon-apigateway-authtype": "custom"

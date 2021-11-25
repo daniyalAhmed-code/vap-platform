@@ -35,3 +35,16 @@ resource "aws_iam_role" "lambda_role" {
 }
 EOF
 }
+# resource "aws_iam_role" "vpc_config_lambda_role" {
+#   count = var.create_role ? 1 : 0
+
+#   name                 = "${var.RESOURCE_PREFIX}--apigateway-lambda-execution-role"
+#   description          = var.role_description
+
+#   force_detach_policies = var.force_detach_policies
+#   permissions_boundary  = var.role_permissions_boundary_arn
+
+#   assume_role_policy = var.role_requires_mfa ? data.aws_iam_policy_document.assume_role_with_mfa.json : data.aws_iam_policy_document.assume_role.json
+
+#   tags = var.tags
+# }
