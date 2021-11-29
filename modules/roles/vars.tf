@@ -1,2 +1,3 @@
 
 variable "RESOURCE_PREFIX" {}
+# variable "VPC_CONFIG_LAMBDA_POLICY_DOCUMENT" {}

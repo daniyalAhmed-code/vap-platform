@@ -19,3 +19,6 @@ output "CIDR_BLOCK" {
 output "SG_ID" {
   value = aws_security_group.security_group.id
 }
+output "LAMBDA_VPC_COMMUNICATION"{
+  value = aws_security_group.allow_lambda_communication.id
+}

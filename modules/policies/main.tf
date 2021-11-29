@@ -134,10 +134,55 @@ data "aws_iam_policy_document" "kms_key_policy" {
   statement {
       actions = ["kms:Decrypt","kms:Encrypt"]
       effect = "Allow"
-      principals {
-        type        = "AWS"
-        identifiers = ["*"]
-      }
       resources = ["*"]
-  }
+      principals {
+      type        = "Federated"
+      identifiers = ["cognito-identity.amazonaws.com"]
+    }
+    }
 } 
+
+
+# #vap-st-Connector 
+
+# resource "aws_iam_policy" "lambda_api_gateway_lambda_policy" {
+#   name     = "${var.RESOURCE_PREFIX}-api-gateway-lambda-policy"
+#   policy   = <<EOF
+# {
+#   "Version": "2012-10-17",
+#   "Statement": [
+#     {
+#       "Action": [
+#         "lambda:invokeFunction"
+#       ],
+#       "Effect": "Allow",
+#       "Resource": "*"
+#     }
+#   ]
+# }
+# EOF
+# }
+
+
+# resource "aws_iam_role_policy_attachment" "lambda_api_gateway_lambda_role_policy_attachment" {
+#   role       = var.LAMBDA_INVOKE_API_KEY_ROTATION_ROLE_NAME
+#   policy_arn = aws_iam_policy.lambda_api_gateway_lambda_policy.arn
+# }
+
+# data "aws_iam_policy_document" "vpc_config_lambda_policy" {
+#   statement {
+#     effect = "Allow"
+
+#     actions = var.TRUSTED_ROLE_ACTIONS
+
+#     principals {
+#       type        = "AWS"
+#       identifiers = var.TRUSTED_ROLE_ARNS
+#     }
+
+#     principals {
+#       type        = "Service"
+#       identifiers = var.TRUSTED_ROLE_SERVICES
+#     }
+# }
+# }
