@@ -4,6 +4,9 @@ locals {
   RESOURCE_PREFIX                          = "vap-${lower(var.ENV)}"
   DEV_PORTAL_CUSTOMERS_TABLE_NAME          = "${local.RESOURCE_PREFIX}-user"
   DEV_PORTAL_PRE_LOGIN_ACCOUNTS_TABLE_NAME = "${local.RESOURCE_PREFIX}-prelogin-account"
+  API_PERMISSION_TABLE_NAME                = "${local.RESOURCE_PREFIX}-api-permission"
+  MNO_THIRD_PARTY_TABLE_NAME                = "${local.RESOURCE_PREFIX}-resources"
+  
   DEV_PORTAL_FEEDBACK_TABLE_NAME           = "${local.RESOURCE_PREFIX}-feedback"
   DEV_PORTAL_CUSTOMER_REQUEST_LOGS_TABLE_NAME = "${local.RESOURCE_PREFIX}-customer-request-log"
   DEV_PORTAL_SITE_S3_BUCKET_NAME           = "${local.RESOURCE_PREFIX}-portal"
@@ -24,6 +27,8 @@ module "dynamodb" {
   ENABLE_POINT_IN_TIME_RECOVERY            = var.ENABLE_POINT_IN_TIME_RECOVERY
   KMS_KEY_ARN                              = module.kms.key_arn
   DEV_PORTAL_CUSTOMER_REQUEST_LOGS_TABLE_NAME = local.DEV_PORTAL_CUSTOMER_REQUEST_LOGS_TABLE_NAME
+  API_PERMISSION_TABLE_NAME                   = local.API_PERMISSION_TABLE_NAME
+  MNO_THIRD_PARTY_TABLE_NAME                  = local.MNO_THIRD_PARTY_TABLE_NAME
 }
 
 module "sns" {
