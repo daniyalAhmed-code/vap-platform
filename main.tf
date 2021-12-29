@@ -7,6 +7,7 @@ locals {
   DEV_PORTAL_FEEDBACK_TABLE_NAME           = "${local.RESOURCE_PREFIX}-feedback"
   API_PERMISSION_TABLE_NAME                = "${local.RESOURCE_PREFIX}-api-permission"
   MNO_THIRD_PARTY_RESOURCE_TABLE_NAME      = "${local.RESOURCE_PREFIX}-resources"
+  API_AUTHORIZER_TABLE_NAME                = "${local.RESOURCE_PREFIX}-authorizer-permission"
   DEV_PORTAL_SITE_S3_BUCKET_NAME           = "${local.RESOURCE_PREFIX}-portal"
   ARTIFACT_S3_BUCKET_NAME                  = "${local.RESOURCE_PREFIX}-artifacts-bucket"
   SNS_TOPIC_NAME                           = "${local.RESOURCE_PREFIX}-send-feedback-email"
@@ -21,6 +22,7 @@ module "dynamodb" {
   API_PERMISSION_TABLE_NAME                = local.API_PERMISSION_TABLE_NAME
   MNO_THIRD_PARTY_RESOURCE_TABLE_NAME      = local.MNO_THIRD_PARTY_RESOURCE_TABLE_NAME
   DEV_PORTAL_FEEDBACK_TABLE_NAME           = local.DEV_PORTAL_FEEDBACK_TABLE_NAME
+  API_AUTHORIZER_TABLE_NAME                = local.API_AUTHORIZER_TABLE_NAME
   ENABLE_POINT_IN_TIME_RECOVERY            = var.ENABLE_POINT_IN_TIME_RECOVERY
   KMS_KEY_ARN                              = module.kms.key_arn
 }

@@ -20,12 +20,20 @@ output "DEV_PORTAL_FEEDBACK_TABLE_ARN" {
 
 
 
-output "API_ROLE_PERMISSION_TABLE_NAME" {
+output "API_PERMISSION_TABLE_NAME" {
   value = aws_dynamodb_table.dynamo-api-permission-db-table.id
 }
 
-output "API_ROLE_PERMISSION_TABLE_ARN" {
+output "API_PERMISSION_TABLE_ARN" {
   value = aws_dynamodb_table.dynamo-api-permission-db-table.arn
+}
+
+output "API_ROLE_PERMISSION_TABLE_NAME" {
+  value = aws_dynamodb_table.dynamo-api-authorizer-db-table.id
+}
+
+output "API_ROLE_PERMISSION_TABLE_ARN" {
+  value = aws_dynamodb_table.dynamo-api-authorizer-db-table.arn
 }
 
 
