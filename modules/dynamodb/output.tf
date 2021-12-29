@@ -17,3 +17,22 @@ output "DEV_PORTAL_PRE_LOGIN_ACCOUNTS_TABLE_ARN" {
 output "DEV_PORTAL_FEEDBACK_TABLE_ARN" {
   value = aws_dynamodb_table.dynamo-dev-portal-feedback-db-table.arn
 }
+
+
+
+output "API_ROLE_PERMISSION_TABLE_NAME" {
+  value = aws_dynamodb_table.dynamo-api-permission-db-table.id
+}
+
+output "API_ROLE_PERMISSION_TABLE_ARN" {
+  value = aws_dynamodb_table.dynamo-api-permission-db-table.arn
+}
+
+
+output "MNO_THIRD_PARTY_RESOURCE_TABLE_NAME" {
+  value = aws_dynamodb_table.dynamo-mno-third-party-resource-db-table.id
+}
+
+output "MNO_THIRD_PARTY_RESOURCE_TABLE_ARN" {
+  value = aws_dynamodb_table.dynamo-mno-third-party-resource-db-table.arn
+}
