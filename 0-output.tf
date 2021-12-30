@@ -22,6 +22,35 @@ output "DEV_PORTAL_PRE_LOGIN_ACCOUNTS_TABLE_ARN" {
   value = module.dynamodb.DEV_PORTAL_PRE_LOGIN_ACCOUNTS_TABLE_ARN
 }
 
+output "API_PERMISSION_TABLE_NAME" {
+  value = module.dynamodb.API_PERMISSION_TABLE_NAME
+
+}
+output "API_PERMISSION_TABLE_ARN" {
+  value = module.dynamodb.API_PERMISSION_TABLE_ARN
+}
+
+
+output "MNO_THIRD_PARTY_RESOURCE_TABLE_NAME" {
+  value = module.dynamodb.MNO_THIRD_PARTY_RESOURCE_TABLE_NAME
+
+}
+output "MNO_THIRD_PARTY_RESOURCE_TABLE_ARN" {
+  value = module.dynamodb.MNO_THIRD_PARTY_RESOURCE_TABLE_ARN
+}
+
+
+output "API_ROLE_PERMISSION_TABLE_NAME" {
+  value = module.dynamodb.API_ROLE_PERMISSION_TABLE_NAME
+
+}
+output "API_ROLE_PERMISSION_TABLE_ARN" {
+  value = module.dynamodb.API_ROLE_PERMISSION_TABLE_ARN
+}
+
+
+
+
 output "DEV_PORTAL_FEEDBACK_TABLE_NAME" {
   value = module.dynamodb.DEV_PORTAL_FEEDBACK_TABLE_NAME
 }
