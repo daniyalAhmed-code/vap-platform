@@ -19,6 +19,74 @@ resource "aws_dynamodb_table" "dynamo-dev-portal-customer-db-table" {
   }
 }
 
+resource "aws_dynamodb_table" "dynamo-api-permission-db-table" {
+  name           = var.API_PERMISSION_TABLE_NAME
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 5
+  write_capacity = 5
+  hash_key       = "Id"
+  attribute {
+    name = "Id"
+    type = "S"
+  }
+  
+  point_in_time_recovery {
+    enabled = var.ENABLE_POINT_IN_TIME_RECOVERY
+  }
+  
+  server_side_encryption {
+    enabled = false
+    kms_key_arn = var.KMS_KEY_ARN
+  }
+}
+
+
+resource "aws_dynamodb_table" "dynamo-mno-third-party-resource-db-table" {
+  name           = var.MNO_THIRD_PARTY_RESOURCE_TABLE_NAME
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 5
+  write_capacity = 5
+  hash_key       = "Id"
+  attribute {
+    name = "Id"
+    type = "S"
+  }
+  
+  point_in_time_recovery {
+    enabled = var.ENABLE_POINT_IN_TIME_RECOVERY
+  }
+  
+  server_side_encryption {
+    enabled = false
+    kms_key_arn = var.KMS_KEY_ARN
+  }
+}
+
+
+resource "aws_dynamodb_table" "dynamo-api-authorizer-db-table" {
+  name           = var.API_AUTHORIZER_TABLE_NAME
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 5
+  write_capacity = 5
+  hash_key       = "role"
+  attribute {
+    name = "role"
+    type = "S"
+  }
+  
+  point_in_time_recovery {
+    enabled = var.ENABLE_POINT_IN_TIME_RECOVERY
+  }
+  
+  server_side_encryption {
+    enabled = false
+    kms_key_arn = var.KMS_KEY_ARN
+  }
+}
+
+
+
+
 resource "aws_dynamodb_table" "dynamo-pre-login-accounts-db-table" {
   name           = var.DEV_PORTAL_PRE_LOGIN_ACCOUNTS_TABLE_NAME
   billing_mode   = "PROVISIONED"
